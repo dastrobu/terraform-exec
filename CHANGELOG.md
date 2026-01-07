@@ -1,3 +1,27 @@
+# 0.24.0 (September 17, 2025)
+
+ENHANCEMENTS:
+
+* Implement `QueryJSON` and introduce new way for consuming Terraform's structured logging ([#539](https://github.com/hashicorp/terraform-exec/pull/539))
+
+INTERNAL:
+
+* bump actions/setup-go from 5.5.0 to 6.0.0 ([#536](https://github.com/hashicorp/terraform-exec/pull/536))
+
+# 0.23.1 (August 27, 2025)
+
+BUG FIXES:
+
+* Avoid closing stdio pipes early on graceful (SIGINT-based) cancellation ([#527](https://github.com/hashicorp/terraform-exec/pull/527))
+  - This enables correct handling of graceful cancellation for recent versions of Terraform (1.1+). Older versions should use `SetEnableLegacyPipeClosing(true)` to avoid hanging on cancellation.
+
+INTERNAL:
+
+* bump github.com/cloudflare/circl from 1.6.0 to 1.6.1 ([#524](https://github.com/hashicorp/terraform-exec/pull/524))
+* bump github.com/hashicorp/terraform-json from 0.24.0 to 0.26.0 ([#520](https://github.com/hashicorp/terraform-exec/pull/520) & [#529](https://github.com/hashicorp/terraform-exec/pull/529))
+* bump github.com/zclconf/go-cty from 1.16.2 to 1.16.4 ([#522](https://github.com/hashicorp/terraform-exec/pull/522) & [#532](https://github.com/hashicorp/terraform-exec/pull/532))
+* bump golang.org/x/net from 0.36.0 to 0.38.0 ([#515](https://github.com/hashicorp/terraform-exec/pull/515))
+
 # 0.23.0 (April 10, 2025)
 
 ENHANCEMENTS:
@@ -237,12 +261,12 @@ FEATURES:
 
 BREAKING CHANGES:
  - Add `-detailed-exit-code` to `Terraform.Plan` calls, `Terraform.Plan` now also returns a bool indicating if any diff is present ([#55](https://github.com/hashicorp/terraform-exec/issues/55))
- 
+
 FEATURES:
  - Added `Terraform.SetAppendUserAgent` for User-Agent management from consuming applications ([#46](https://github.com/hashicorp/terraform-exec/issues/46))
  - Added `Terraform.WorkspaceList`, `Terraform.WorkspaceNew`, and `Terraform.WorkspaceSelect` along with the `ErrNoWorkspace` error to indicate a workspace does not exist ([#56](https://github.com/hashicorp/terraform-exec/issues/56))
  - Added support for using multiple `VarFile` options ([#61](https://github.com/hashicorp/terraform-exec/issues/61))
- 
+
 BUG FIXES:
  - Fix bug with checking for empty path before executing version command ([#62](https://github.com/hashicorp/terraform-exec/issues/62))
 
